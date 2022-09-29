@@ -11,7 +11,7 @@ router.get('', function (req, res, next) {
   });
 });
 
-router.get(':id', function (req, res, next) {
+router.get('/:id', function (req, res, next) {
   const response = database.findById(req.params.id);
 
   if (response) {
@@ -35,7 +35,7 @@ router.post('', function (req, res, next) {
   })
 });
 
-router.put(':id', function (req, res, next) {
+router.put('/:id', function (req, res, next) {
   const exists = database.existsBy(req.params.id)
   if (exists != -1) {
     database.update(req.params.id, req.body)
@@ -51,7 +51,7 @@ router.put(':id', function (req, res, next) {
   }
 });
 
-router.delete('books/:id', function (req, res, next) {
+router.delete('/:id', function (req, res, next) {
   const exists = database.existsBy(req.params.id)
   if (exists != -1) {
     database.del(req.params.id)
